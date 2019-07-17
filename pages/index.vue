@@ -1,28 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <logo />
-      <h1 class="title">
-        sample-app
-      </h1>
-      <h2 class="subtitle">
-        My hunky-dory Nuxt.js project
-      </h2>
+      <div class="inline" v-for="n in kanpaiCount">
+        <logo />
+      </div>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <button class="kanpaiButton" @click="kanpai">乾杯する！</button>
       </div>
     </div>
   </div>
@@ -34,6 +17,19 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+
+  data() {
+    return {
+      kanpaiCount : 1,
+    }
+  },
+
+  methods: {
+    kanpai: function () {
+      console.log('kanpai');
+      this.kanpaiCount++;
+    }
   }
 }
 </script>
@@ -66,7 +62,10 @@ export default {
   padding-bottom: 15px;
 }
 
-.links {
-  padding-top: 15px;
+.inline {
+  display: inline-block;
+}
+.kanpaiButton {
+  font-size : 40px;
 }
 </style>
